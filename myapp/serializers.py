@@ -41,6 +41,8 @@ class UserSerializer(serializers.ModelSerializer):
     
     
 class PostSerializer(serializers.ModelSerializer):
+    user = serializers.CharField(required=False, allow_blank=True)  # Allows blank
+
 
     class Meta:
         model = Post

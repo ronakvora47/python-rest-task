@@ -107,6 +107,12 @@ class PostAPIView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
     
+    def get(self, request):
+        post = Post.objects.all()
+        serializer = PostSerializer(post, many=True)
+
+        return Response(serializer.data)
+    
     def post(self, request):
         data = request.data
         user = request.user
